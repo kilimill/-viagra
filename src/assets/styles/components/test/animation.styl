@@ -1,0 +1,151 @@
+.test
+	&__question-word
+		overflow hidden
+		margin-left 5px
+		span
+			display inline-block
+			transform translateY(100%)
+			transition .5s transform
+	&__answers
+		transition .5s transform, .5s opacity
+		transform translateY(50%)
+		opacity 0
+	&__current
+		opacity 0
+		transition .5s opacity
+
+.test[loaded]
+	.test
+		&__current
+			opacity 1
+
+		&__answers
+			opacity 1
+			transform translateY(0)
+			transition-delay .5s
+
+	.question-one-svg
+		animation q1svg 10s linear forwards
+		animation-delay 1s
+
+.test.hide
+	.test__question
+		opacity 0
+		transition .5s opacity
+	.test__decor
+		opacity 0
+		transition .5s opacity
+	.test__answers
+		pointer-events none
+
+.test.animate
+	.test
+		&__question-word
+			span
+				transform translateY(0)
+			&:nth-child(2)
+				span
+					transition-delay .1s
+			&:nth-child(3)
+				span
+					transition-delay .2s
+			&:nth-child(4)
+				span
+					transition-delay .3s
+			&:nth-child(5)
+				span
+					transition-delay .4s
+			&:nth-child(6)
+				span
+					transition-delay .5s
+			&:nth-child(7)
+				span
+					transition-delay .6s
+			&:nth-child(8)
+				span
+					transition-delay .7s
+			&:nth-child(9)
+				span
+					transition-delay .8s
+			&:nth-child(10)
+				span
+					transition-delay .9s
+			&:nth-child(11)
+				span
+					transition-delay 1s
+			&:nth-child(12)
+				span
+					transition-delay 1.1s
+			&:nth-child(13)
+				span
+					transition-delay 1.2s
+			&:nth-child(14)
+				span
+					transition-delay 1.3s
+			&:nth-child(15)
+				span
+					transition-delay 1.4s
+			&:nth-child(16)
+				span
+					transition-delay 1.5s
+			&:nth-child(17)
+				span
+					transition-delay 1.6s
+			&:nth-child(18)
+				span
+					transition-delay 1.7s
+			&:nth-child(19)
+				span
+					transition-delay 1.8s
+			&:nth-child(20)
+				span
+					transition-delay 1.9s
+			&:nth-child(21)
+				span
+					transition-delay 2s
+			&:nth-child(22)
+				span
+					transition-delay 2.1s
+			&:nth-child(23)
+				span
+					transition-delay 2.2s
+			&:nth-child(24)
+				span
+					transition-delay 2.3s
+			&:nth-child(25)
+				span
+					transition-delay 2.4s
+	.question-two-svg
+		animation q2svg 20s linear forwards
+		// animation-delay 1s
+	.question-three-svg
+		animation q3svg 20s linear forwards
+	.question-four-svg
+		animation q4svg 10s linear forwards
+	.question-fifth-svg
+		animation q4svg 20s linear forwards
+
+@keyframes q1svg
+	0%
+		stroke-dashoffset 18283
+	100%
+		stroke-dashoffset 0
+
+@keyframes q2svg
+	0%
+		stroke-dashoffset 25034
+	100%
+		stroke-dashoffset 0
+
+@keyframes q3svg
+	0%
+		stroke-dashoffset 15724
+	100%
+		stroke-dashoffset 0
+
+@keyframes q4svg
+	0%
+		stroke-dashoffset 14353
+	100%
+		stroke-dashoffset 0
+

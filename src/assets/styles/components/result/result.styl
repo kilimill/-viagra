@@ -1,0 +1,611 @@
+.result
+	overflow-x hidden
+	width 100%
+	@media $mobile
+		padding 0 vm(25)
+	&__hero
+		height 'calc(100vh - %s)' %vw(87)
+		padding vw(70) vw(188)
+		dfv(,center)
+		position relative
+		overflow hidden
+		@media $mobile
+			overflow visible
+			min-height 0
+			height auto
+			padding 0
+	&__bg
+		position absolute
+		top 50%
+		left 50%
+		transform translate(-50%, -50%)
+		width 100%
+		height 100%
+		object-fit cover
+		z-index -1
+		@media $mobile
+			display none
+	&__mobile-bg
+		height vm(410)
+		width 'calc(100% + %s)' %vm(50)
+		background-size cover
+		margin-left vm(-25)
+		margin-bottom vm(29)
+	&__undertitle
+		fontify vw(16) 400 vw(20)
+		letter-spacing .1em
+		color #28BCE4
+		margin-bottom vw(28)
+		@media $mobile
+			fontify vm(15) 400 vm(18)
+			margin-bottom vm(16)
+	&__title
+		display inline-block
+		margin-bottom vw(33)
+		width vw(702)
+		margin-left vw(-7)
+		@media $mobile
+			width 100%
+			margin-left 0
+			margin-bottom vm(28)
+		p
+			fontify vw(60) 700 vw(73)
+			letter-spacing -.04em
+			color #2B333D
+			@media $mobile
+				color $white
+				fontify vm(45) 700 vm(54)
+	&__title-word
+		display inline-block
+		margin-right vw(10)
+		overflow hidden
+	&__text
+		fontify vw(18) 400 vw(25)
+		letter-spacing -0.04em
+		color #0C131D
+		opacity .8
+		max-width vw(523)
+		margin-bottom vw(50)
+		@media $mobile
+			fontify vm(17) 400 vm(23)
+			max-width 100%
+			color $white
+			opacity .8
+			margin-bottom vm(41)
+	&__scroll
+		fontify vw(14) 400 vw(17)
+		letter-spacing .1em
+		color #81A0A9
+		margin-left vw(10)
+		df(center)
+		&:before
+			content ''
+			position static
+			display inline-block
+			margin-right vw(29)
+			width vw(16)
+			height vw(27)
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.29289 26.7071C7.68342 27.0976 8.31658 27.0976 8.70711 26.7071L15.0711 20.3431C15.4616 19.9526 15.4616 19.3195 15.0711 18.9289C14.6805 18.5384 14.0474 18.5384 13.6569 18.9289L8 24.5858L2.34315 18.9289C1.95262 18.5384 1.31946 18.5384 0.928931 18.9289C0.538407 19.3195 0.538407 19.9526 0.928931 20.3431L7.29289 26.7071ZM7 -4.37114e-08L7 26L9 26L9 4.37114e-08L7 -4.37114e-08Z' fill='%2381A0A9'/%3E%3C/svg%3E%0A")
+			animation slide 1.5s linear infinite
+	&__screen
+		dfv()
+		position relative
+		&--one
+			padding 0 vw(229)
+			padding-top vw(396)
+			padding-bottom vw(142)
+			@media $mobile
+				padding 0
+				padding-top vm(85)
+				padding-bottom vm(114)
+			&:after
+				content ''
+				position absolute
+				width vw(1022)
+				height 1px
+				background-color $white
+				bottom 0
+				right vw(113)
+				@media $mobile
+					width vm(325)
+					right vm(-25)
+			&:before
+				content ''
+				position absolute
+				left -9%
+				top 14%
+				width vw(504)
+				height vw(504)
+				border 1px solid #28BCE4
+				border-radius 50%
+				@media $mobile
+					content none
+			.result__screen-numb
+				@media $mobile
+					margin-bottom vm(17)
+			.result__screen-title
+				margin-left vw(138)
+				margin-bottom vw(62)
+				@media $mobile
+					margin-left vm(26)
+					margin-bottom vm(66)
+			.result__screen-text
+				margin-left vw(236)
+				@media $mobile
+					margin-left 0
+			.result__screen-decor-one
+				position absolute
+				right 0
+				top vw(123)
+				width vw(952) 
+				height vw(359)
+				@media $mobile
+					position relative
+					width vm(542)
+					height vm(178)
+					top auto
+					left vm(-82)
+					margin-bottom vm(77)
+			.result__screen-decor-two
+				position absolute
+				width vw(913)
+				height vw(363)
+				right 0
+				top vw(216)
+				@media $mobile
+					position relative
+					width vm(532)
+					height vm(172)
+					right vm(120)
+					top auto
+					margin-bottom vm(68)
+		&--two
+			padding-right vw(229)
+			padding-left vw(596)
+			padding-top vw(194)
+			padding-bottom vw(309)
+			@media $mobile
+				padding 0
+				padding-top vm(85)
+				padding-bottom vm(114)
+			&:after
+				content ''
+				position absolute
+				width vw(1022)
+				height 1px
+				background-color $white
+				bottom 0
+				left vw(92)
+				@media $mobile
+					width vm(325)
+					right vm(-25)
+					left auto
+			&:before
+				content ''
+				position absolute
+				right -4%
+				bottom -12%
+				width vw(363)
+				height vw(363)
+				border 1px solid #28BCE4
+				border-radius 50%
+				@media $mobile
+					content none
+			.result__screen-numb
+				margin-bottom vw(15)
+				@media $mobile
+					margin-bottom vm(17)
+			.result__screen-title
+				margin-left vw(136)
+				margin-bottom vw(68)
+				@media $mobile
+					margin-left vm(26)
+					margin-bottom vm(66)
+			.result__screen-text
+				margin-left vw(223)
+				max-width vw(521)
+				@media $mobile
+					margin-left 0
+			.result__screen-decor-one
+				position absolute
+				width vw(1130)
+				height vw(496)
+				left 0
+				top vw(290)
+				@media $mobile
+					position relative
+					width vm(800)
+					height vm(336)
+					top vm(8)
+					left vm(-120)
+					margin-bottom vm(30)
+			.result__screen-decor-two
+				position absolute
+				width vw(991)
+				height vw(670)
+				left 0
+				bottom vw(49)
+				@media $mobile
+					position relative
+					width vm(529)
+					height vm(350)
+					bottom vm(46)
+					left vm(35)
+					margin-bottom vm(21)
+		&--three
+			padding-left vw(92)
+			padding-right vw(200)
+			padding-top vw(114)
+			padding-bottom vw(138)
+			@media $mobile
+				padding 0
+				padding-top vm(113)
+				padding-bottom vm(114)
+			&:after
+				content ''
+				position absolute
+				width vw(1022)
+				height 1px
+				background-color $white
+				bottom 0
+				left vw(92)
+				@media $mobile
+					width vm(325)
+					right vm(-25)
+					left auto
+			.result__screen-numb
+				margin-bottom vw(14)
+				@media $mobile
+					margin-bottom vm(17)
+			.result__screen-title
+				margin-left vw(137)
+				max-width vw(472)
+				margin-bottom vw(64)
+				@media $mobile
+					margin-left vm(26)
+					margin-bottom vm(66)
+			.result__screen-text
+				max-width vw(417)
+				margin-left vw(181)
+				@media $mobile
+					margin-left 0
+			.result__screen-decor-one
+				position absolute
+				width vw(773)
+				height vw(648)
+				right vw(0)
+				top vw(189)
+				@media $mobile
+					position relative
+					width vm(380)
+					height vm(279)
+					top auto
+					left vm(-14)
+					margin-bottom vm(75)
+			.result__screen-decor-two
+				position absolute
+				width vw(773)
+				height vw(648)
+				right 0
+				bottom vw(86)
+				@media $mobile
+					position relative
+					width vm(380)
+					height vm(279)
+					bottom vm(-6)
+					right vm(15)
+					margin-bottom vm(75)
+		&--four
+			padding-top vw(164)
+			padding-left vw(736)
+			padding-right vw(150)
+			padding-bottom vw(312)
+			@media $mobile
+				padding 0
+				padding-top vm(108)
+				padding-bottom vm(114)
+			&:after
+				content ''
+				position absolute
+				width vw(1087)
+				height 1px
+				background-color $white
+				bottom 0
+				right vw(84)
+				@media $mobile
+					width vm(325)
+					right vm(-25)
+			.result__screen-numb
+				margin-bottom vw(15)
+				@media $mobile
+					margin-bottom vm(17)
+			.result__screen-title
+				margin-left vw(135)
+				margin-bottom vw(20)
+				margin-bottom vw(73)
+				@media $mobile
+					margin-left vm(26)
+					margin-bottom vm(92)
+			.result__screen-text
+				margin-left vw(226)
+				max-width vw(478)
+				@media $mobile
+					margin-left 0
+			.result__screen-decor-one
+				position absolute
+				width vw(1571)
+				height vw(900)
+				left vw(0)
+				top vw(125)
+				@media $mobile
+					position relative
+					width vm(786)
+					height vm(432)
+					top auto
+					left vm(-25)
+					margin-bottom vm(77)
+			.result__screen-decor-two
+				position absolute
+				width vw(917)
+				height vw(740)
+				left 0
+				bottom vw(62)
+				@media $mobile
+					position relative
+					width vm(686)
+					height vm(435)
+					left vm(-105)
+					bottom vm(62)
+					margin-bottom vm(49)
+		&--fifth
+			padding-top vw(121)
+			padding-left vw(229)
+			padding-right vw(229)
+			padding-bottom vw(316)
+			@media $mobile
+				padding 0
+				padding-top vm(71)
+				padding-bottom vm(114)
+			&:after
+				content ''
+				position absolute
+				width vw(1022)
+				height 1px
+				background-color $white
+				bottom 0
+				right vw(205)
+				@media $mobile
+					width vm(325)
+					right auto
+					left vm(-25)
+			&:before
+				content ''
+				position absolute
+				left -9%
+				top 39%
+				width vw(504)
+				height vw(504)
+				border 1px solid #28BCE4
+				border-radius 50%
+				@media $mobile
+					content none
+			.result__screen-numb
+				margin-bottom vw(3)
+				@media $mobile
+					margin-bottom vm(17)
+			.result__screen-title
+				margin-left vw(138)
+				margin-bottom vw(73)
+				@media $mobile
+					margin-left vm(26)
+					margin-bottom vm(97)
+			.result__screen-text
+				max-width vw(460)
+				margin-left vw(237)
+				@media $mobile
+					margin-left 0
+			.result__screen-decor-one
+				position absolute
+				width vw(616)
+				height vw(648)
+				right 0
+				bottom vw(130)
+				@media $mobile
+					position relative
+					width vm(695)
+					height vm(416)
+					top auto
+					left vm(-185)
+					right auto
+					bottom auto
+					margin-bottom vm(90)
+			.result__screen-decor-two
+				position absolute
+				width vw(991)
+				height vw(670)
+				right vw(-375)
+				bottom vw(134)
+				@media $mobile
+					position relative
+					width vm(695)
+					height vm(416)
+					right vm(185)
+					bottom vm(31)
+					margin-bottom vm(59)
+	&__screen-numb
+		fontify vw(80) 400 vw(98)
+		color $white
+		letter-spacing .1em
+		@media $mobile
+			fontify vm(50) 400 vm(61)
+	&__screen-title
+		@media $mobile
+			max-width 100%!important
+		p
+			fontify vw(70) 700 vw(85)
+			letter-spacing -.04em
+			color #28BCE4
+			@media $mobile
+				fontify vm(45) 700 vm(55)
+	&__screen-title-word
+		overflow hidden
+		display inline-block
+	&__screen-text
+		fontify vw(18) 400 vw(25)
+		letter-spacing -.04em
+		color $white
+		max-width vw(570)
+		@media $mobile
+			max-width 100%!important
+			fontify vm(17) 400 vm(23)
+			br
+				display none
+		a
+			color #28BCE4
+			border-bottom 1px solid #28BCE4
+			transition .4s border-color
+			@media $desktop
+				&:hover
+					border-color $t
+		sup
+			color #28BCE4
+	&__footer
+		dfv(center)
+		padding-top vw(173)
+		padding-left vw(98)
+		padding-bottom vw(262)
+		@media $mobile
+			padding-top vm(132)
+			padding-left 0
+			padding-bottom vm(110)
+	&__footer-title
+		margin-bottom vw(34)
+		@media $mobile
+			margin-bottom vm(32)
+		p
+			fontify vw(70) 700 vw(85)
+			letter-spacing -.04em
+			color #28BCE4
+			@media $mobile
+				fontify vm(35) 700 vm(43)
+	&__footer-subtitle
+		fontify vw(18) 400 vw(25)
+		color $white
+		letter-spacing -.04em
+		margin-right vw(357)
+		@media $mobile
+			margin-right 0
+			fontify vm(18) 400 vm(25)
+			align-self flex-start
+		a
+			color #28BCE4
+			border-bottom 1px solid #28BCE4
+			transition .4s border-color
+			@media $desktop
+				&:hover
+					border-color $t
+	&__restart
+		fontify vw(16) 400 vw(19)
+		color #28BCE4
+		letter-spacing .095em
+		dfv(center,)
+		margin-left vw(36)
+		@media $mobile
+			fontify vm(16) 400 vm(19)
+			margin-top vm(39)
+			margin-left vm(7)
+		@media $desktop
+			&:hover
+				&:after
+					transform translateX(vw(-10))
+		&:after
+			content ''
+			position static
+			display inline-block
+			width vw(68)
+			height vw(12)
+			margin-top vw(10)
+			background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 68 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.469673 5.46966C0.176773 5.76256 0.176773 6.23743 0.469673 6.53032L5.24264 11.3033C5.53553 11.5962 6.01041 11.5962 6.3033 11.3033C6.59619 11.0104 6.59619 10.5355 6.3033 10.2426L2.06066 5.99999L6.3033 1.75735C6.5962 1.46446 6.5962 0.989587 6.3033 0.696694C6.01041 0.4038 5.53553 0.4038 5.24264 0.696694L0.469673 5.46966ZM68 5.25L1 5.24999L1 6.74999L68 6.75L68 5.25Z' fill='%2328BCE4'/%3E%3C/svg%3E%0A")
+			transition .4s transform
+			@media $mobile
+				width vm(68)
+				height vm(12)
+				margin-top vm(10)
+	&__footer-title-word
+		overflow hidden
+		display inline-block
+		padding-right vw(5)
+		margin-right vw(5)
+	&__share
+		df(center)
+		margin-bottom vw(70)
+		@media $mobile
+			dfv()
+			margin-bottom 0
+		.ya-share2__item
+			margin 0!important
+			margin-right vw(24)!important
+			@media $desktop
+				&:hover
+					opacity 1!important
+			@media $mobile
+				margin-right vm(24)!important
+		.ya-share2__item_service_facebook .ya-share2__badge, .ya-share2__item_service_facebook .ya-share2__mobile-popup-badge,
+		.ya-share2__item_service_twitter .ya-share2__badge, .ya-share2__item_service_twitter .ya-share2__mobile-popup-badge,
+		.ya-share2__item_service_vkontakte .ya-share2__badge, .ya-share2__item_service_vkontakte .ya-share2__mobile-popup-badge
+			background-color $t
+		.ya-share2__container_size_m .ya-share2__badge .ya-share2__icon
+			width vw(57)
+			height vw(57)
+			border 1px solid #28BCE4
+			border-radius 50%
+			transition .5s background-color
+			@media $desktop
+				&:hover
+					background-color #28BCE4!important
+			@media $mobile
+				width vm(57)
+				height vm(57)
+		.ya-share2,
+		.ya-share2 *
+			line-height 0
+			font-size 0
+			margin-top 0
+		.ya-share2__item_service_facebook .ya-share2__icon
+			background-position center!important
+			background-repeat no-repeat!important
+			background-size vw(10) vw(18)!important
+			background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.51764 8.74213H6.16573V17.3422H2.23737V8.74213H0.712036V5.85023H2.23737V4.00916C2.23737 1.58803 3.25141 0.15049 6.14869 0.15049H9.08005V3.03398H7.37577C6.25095 3.03398 6.17426 3.44591 6.17426 4.21933L6.16573 5.84182H8.84145L8.51764 8.74213Z' fill='%2328BCE4'/%3E%3C/svg%3E%0A")!important
+			@media $desktop
+				&:hover
+					background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 10 18' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.51764 8.74213H6.16573V17.3422H2.23737V8.74213H0.712036V5.85023H2.23737V4.00916C2.23737 1.58803 3.25141 0.15049 6.14869 0.15049H9.08005V3.03398H7.37577C6.25095 3.03398 6.17426 3.44591 6.17426 4.21933L6.16573 5.84182H8.84145L8.51764 8.74213Z' /%3E%3C/svg%3E%0A")!important
+			@media $mobile
+				background-size vm(10) vm(18)!important
+		.ya-share2__item_service_twitter .ya-share2__icon
+			background-position center!important
+			background-repeat no-repeat!important
+			background-size vw(19) vw(15)!important
+			background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 19 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.4473 1.71702C17.7848 2.00805 17.0834 2.19952 16.3352 2.28377C17.0912 1.83956 17.6757 1.12729 17.9485 0.284814C17.2392 0.698391 16.4521 0.997086 15.6181 1.15792C14.9478 0.453309 13.997 0.0167542 12.937 0.0167542C10.9106 0.0167542 9.26602 1.63277 9.26602 3.62406C9.26602 3.90744 9.2972 4.18316 9.35955 4.44356C6.30432 4.29038 3.59981 2.85818 1.79161 0.675414C1.47205 1.21153 1.29279 1.8319 1.29279 2.49056C1.29279 3.73895 1.9397 4.84948 2.92953 5.49282C2.3294 5.4775 1.76043 5.30901 1.26941 5.04095C1.26941 5.05627 1.26941 5.07158 1.26941 5.0869C1.26941 6.83312 2.53203 8.29596 4.21553 8.62529C3.91157 8.70953 3.58421 8.75548 3.24907 8.75548C3.01526 8.75548 2.78144 8.73251 2.55541 8.68655C3.02305 10.1188 4.37921 11.168 5.98476 11.191C4.72994 12.156 3.14776 12.7381 1.42529 12.7381C1.12912 12.7381 0.832951 12.7228 0.552368 12.6845C2.17351 13.7108 4.10642 14.3081 6.17961 14.3081C12.937 14.3081 16.6313 8.8091 16.6313 4.03764C16.6313 3.87681 16.6235 3.72363 16.6235 3.57045C17.3328 3.07263 17.9485 2.43695 18.4473 1.71702Z' fill='%2328BCE4'/%3E%3C/svg%3E%0A")!important
+			@media $desktop
+				&:hover
+					background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 19 15' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.4473 1.71702C17.7848 2.00805 17.0834 2.19952 16.3352 2.28377C17.0912 1.83956 17.6757 1.12729 17.9485 0.284814C17.2392 0.698391 16.4521 0.997086 15.6181 1.15792C14.9478 0.453309 13.997 0.0167542 12.937 0.0167542C10.9106 0.0167542 9.26602 1.63277 9.26602 3.62406C9.26602 3.90744 9.2972 4.18316 9.35955 4.44356C6.30432 4.29038 3.59981 2.85818 1.79161 0.675414C1.47205 1.21153 1.29279 1.8319 1.29279 2.49056C1.29279 3.73895 1.9397 4.84948 2.92953 5.49282C2.3294 5.4775 1.76043 5.30901 1.26941 5.04095C1.26941 5.05627 1.26941 5.07158 1.26941 5.0869C1.26941 6.83312 2.53203 8.29596 4.21553 8.62529C3.91157 8.70953 3.58421 8.75548 3.24907 8.75548C3.01526 8.75548 2.78144 8.73251 2.55541 8.68655C3.02305 10.1188 4.37921 11.168 5.98476 11.191C4.72994 12.156 3.14776 12.7381 1.42529 12.7381C1.12912 12.7381 0.832951 12.7228 0.552368 12.6845C2.17351 13.7108 4.10642 14.3081 6.17961 14.3081C12.937 14.3081 16.6313 8.8091 16.6313 4.03764C16.6313 3.87681 16.6235 3.72363 16.6235 3.57045C17.3328 3.07263 17.9485 2.43695 18.4473 1.71702Z' /%3E%3C/svg%3E%0A")!important
+			@media $mobile
+				background-size vm(19) vm(15)!important
+		.ya-share2__item_service_vkontakte .ya-share2__icon
+			background-position center!important
+			background-repeat no-repeat!important
+			background-size vw(23) vw(13)!important
+			background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 23 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.9446 8.89933C21.6493 10.4468 22.0098 11.1949 22.0624 11.2903C22.7683 12.4344 21.2814 12.5224 21.2814 12.5224L18.4352 12.5664C18.4352 12.5664 17.8193 12.6838 17.0233 12.141C15.9569 11.4296 14.9506 9.57407 14.1696 9.8161C13.3811 10.0581 13.4036 11.7303 13.4036 11.7303C13.4036 11.7303 13.4111 11.9724 13.2309 12.1557C13.0356 12.3611 12.6526 12.2804 12.6526 12.2804H11.3759C11.3759 12.2804 8.56727 12.5664 6.08904 10.0508C3.39302 7.30781 1.0049 1.91717 1.0049 1.91717C1.0049 1.91717 0.869724 1.59446 1.01992 1.4111C1.19265 1.22042 1.64323 1.22042 1.64323 1.22042L4.69221 1.20575C4.69221 1.20575 4.97759 1.25709 5.18036 1.40377C5.35308 1.52845 5.44319 1.75581 5.44319 1.75581C5.44319 1.75581 5.93133 2.97329 6.59219 4.06609C7.86135 6.21501 8.45463 6.6844 8.88268 6.45704C9.51351 6.11966 9.32576 3.42801 9.32576 3.42801C9.32576 3.42801 9.34079 2.44523 9.00284 2.01251C8.75502 1.67514 8.27439 1.57246 8.06412 1.55046C7.89139 1.52845 8.16926 1.13974 8.53724 0.963718C9.08545 0.699687 10.0542 0.692353 11.1957 0.699688C12.0819 0.707022 12.3447 0.765696 12.6902 0.839038C13.7415 1.08107 13.3886 2.04185 13.3886 4.33745C13.3886 5.07087 13.2534 6.105 13.7941 6.4497C14.0269 6.59639 14.5976 6.47171 16.0245 4.10276C16.7004 2.98063 17.2035 1.6678 17.2035 1.6678C17.2035 1.6678 17.3162 1.43311 17.4814 1.33043C17.6541 1.22775 17.8944 1.26442 17.8944 1.26442L21.1011 1.24242C21.1011 1.24242 22.0624 1.13241 22.2201 1.55779C22.3853 2.00518 21.8596 3.0393 20.5454 4.74083C18.3976 7.54983 18.1573 7.2858 19.9446 8.89933Z' fill='%2328BCE4'/%3E%3C/svg%3E%0A")!important
+			@media $desktop
+				&:hover
+					background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 23 13' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.9446 8.89933C21.6493 10.4468 22.0098 11.1949 22.0624 11.2903C22.7683 12.4344 21.2814 12.5224 21.2814 12.5224L18.4352 12.5664C18.4352 12.5664 17.8193 12.6838 17.0233 12.141C15.9569 11.4296 14.9506 9.57407 14.1696 9.8161C13.3811 10.0581 13.4036 11.7303 13.4036 11.7303C13.4036 11.7303 13.4111 11.9724 13.2309 12.1557C13.0356 12.3611 12.6526 12.2804 12.6526 12.2804H11.3759C11.3759 12.2804 8.56727 12.5664 6.08904 10.0508C3.39302 7.30781 1.0049 1.91717 1.0049 1.91717C1.0049 1.91717 0.869724 1.59446 1.01992 1.4111C1.19265 1.22042 1.64323 1.22042 1.64323 1.22042L4.69221 1.20575C4.69221 1.20575 4.97759 1.25709 5.18036 1.40377C5.35308 1.52845 5.44319 1.75581 5.44319 1.75581C5.44319 1.75581 5.93133 2.97329 6.59219 4.06609C7.86135 6.21501 8.45463 6.6844 8.88268 6.45704C9.51351 6.11966 9.32576 3.42801 9.32576 3.42801C9.32576 3.42801 9.34079 2.44523 9.00284 2.01251C8.75502 1.67514 8.27439 1.57246 8.06412 1.55046C7.89139 1.52845 8.16926 1.13974 8.53724 0.963718C9.08545 0.699687 10.0542 0.692353 11.1957 0.699688C12.0819 0.707022 12.3447 0.765696 12.6902 0.839038C13.7415 1.08107 13.3886 2.04185 13.3886 4.33745C13.3886 5.07087 13.2534 6.105 13.7941 6.4497C14.0269 6.59639 14.5976 6.47171 16.0245 4.10276C16.7004 2.98063 17.2035 1.6678 17.2035 1.6678C17.2035 1.6678 17.3162 1.43311 17.4814 1.33043C17.6541 1.22775 17.8944 1.26442 17.8944 1.26442L21.1011 1.24242C21.1011 1.24242 22.0624 1.13241 22.2201 1.55779C22.3853 2.00518 21.8596 3.0393 20.5454 4.74083C18.3976 7.54983 18.1573 7.2858 19.9446 8.89933Z' /%3E%3C/svg%3E%0A")!important
+			@media $mobile
+				background-size vm(23) vm(13)!important
+
+@keyframes slide
+	0%
+		transform translateY(5px)
+	50%
+		transform translateY(-5px)
+	100%
+		transform translateY(5px)

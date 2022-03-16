@@ -1,0 +1,57 @@
+.intro
+	overflow hidden
+	&:before
+		width 0
+		transition .5s width
+		transition-delay .6s
+	&__container
+		&:before
+			width 0
+			transition .5s width
+			transition-delay .6s
+	&__wrap
+		overflow hidden
+	&__title
+		p
+			transform translateY(100%)
+			transition .5s transform
+		&--last
+			p
+				transition-delay .1s
+	&__subtitle
+		p
+			transform translateY(100%)
+			transition .5s transform
+			transition-delay .2s
+		&--last
+			p
+				transition-delay .3s
+	&__text
+		transform translateY(50%)
+		opacity 0
+		transition .4s transform, .4s opacity
+		transition-delay .45s
+	&__play
+		opacity 0
+		transition .5s opacity 
+		transition-delay .8s
+
+
+.intro[loaded]
+	&:before
+		width vw(1003)
+	.intro
+		&__title
+			p
+				transform translateY(0)
+		&__subtitle
+			p
+				transform translateY(0)
+		&__container
+			&:before
+				width 100%
+		&__text
+			opacity 1
+			transform translateY(0)
+		&__play
+			opacity 1

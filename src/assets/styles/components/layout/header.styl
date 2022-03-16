@@ -1,0 +1,40 @@
+.header.centered .header__spec
+	@media $desktop
+		margin-right vw(581)
+
+.header
+	padding vw(30) vw(48)
+	df(center,space-between)
+	@media $mobile
+		padding 0 vm(27)
+		padding-top vm(22)
+		padding-bottom vm(28)
+	&__gravia
+		display inline-block
+	&__gravia-logo
+		width vw(67)
+		height vw(19)
+		@media $mobile
+			width vm(58)
+			height vm(16)
+	&__container
+		df(center)
+	&__spec
+		fontify vw(12) 400 vw(15)
+		letter-spacing .05em
+		color #E2E8F0
+		text-transform uppercase
+		opacity .6
+		margin-right vw(224)
+		transition .4s margin
+		@media $mobile
+			fontify vm(8) 400 vm(10)
+			margin-right vm(38)
+	&__champ
+		display inline-block
+	&__champ-logo
+		width vw(124)
+		height vw(24)
+		@media $mobile
+			width vm(92)
+			height vm(18)

@@ -1,0 +1,188 @@
+.test
+	width 100%
+	padding-left vw(78)
+	padding-top vw(60)
+	padding-bottom vw(100)
+	min-height 100%
+	dfv(,center)
+	position relative
+	min-height inherit
+	border-top 1px solid #28BCE4
+	@media $mobile
+		padding-left 0
+		padding-top vm(34)
+		overflow-x hidden
+	&:before
+		content ''
+		position absolute
+		bottom 0
+		left 0
+		width vw(1000)
+		height vw(1)
+		background-color #28BCE4
+		@media $mobile
+			content none
+	&__container
+		df()
+		position relative
+		margin-bottom vw(115)
+		@media $mobile
+			width 100%
+			margin-bottom 0
+			flex-direction column
+			min-height vm(352)
+			padding-left vm(27)
+			border-bottom 1px solid #28BCE4
+	&__current
+		df(flex-end)
+		b
+			fontify vw(20) 300 vw(24)
+			letter-spacing .1em
+			color #A5C8D1
+			position relative
+			bottom vw(4)
+			@media $mobile
+				fontify vm(17) 300 vm(21)
+				bottom vm(8)
+		.test__current-numb-zero,
+		.odometer-value
+			fontify vw(60) 400 1
+			letter-spacing .1em
+			color #28BCE4
+			display inline-block
+			vertical-align middle
+			@media $mobile
+				fontify vm(50) 400 vm(61)
+		.odometer-digit-spacer
+			width vw(40)
+			height vw(60)
+			@media $mobile
+				width vm(38)
+				height vm(61)
+		.iOdometer
+			margin-left vw(-5)
+			margin-right vw(5)
+	&__current-numb
+		display inline-block
+		vertical-align middle
+		.iOdometer
+			font-family $os !important
+	&__question-word
+		display inline-block
+	&__question
+		position absolute
+		top vw(-13)
+		left vw(165)
+		width vw(600)
+		margin-top vw(12)
+		@media $mobile
+			position relative
+			top auto
+			left auto
+			width 100%
+			margin-top vm(17)
+		@media $desktop
+			br
+				display none
+		span
+			fontify vw(35) 700 vw(54)
+			letter-spacing -.04em
+			color $white
+			@media $mobile
+				fontify vm(26) 700 vm(31)
+	&__answers
+		margin-left vw(150)
+		@media $mobile
+			margin 0 auto
+			df(,center)
+			padding-top vm(43)
+	&__answer
+		width vw(282)
+		height vw(282)
+		border 1px solid #28BCE4
+		border-radius 50%
+		fontify vw(18) 400 vw(24)
+		letter-spacing -.04em
+		color $white
+		position relative
+		margin-right vw(44)
+		transition .4s background, .4s box-shadow
+		box-shadow vw(4) vw(13) vw(4) $t
+		z-index 1
+		@media $desktop
+			&:hover
+				background-color #28BCE4
+				box-shadow vw(4) vw(13) vw(4) rgba(0, 0, 0, 0.2)
+				&:after
+					opacity 1
+					transform translate(-50%, -50%)
+		@media $mobile
+			width vm(120)
+			height vm(120)
+			fontify vm(17) 400 vm(21)
+			background-color #28BCE4
+		&:after
+			content ''
+			position absolute
+			bottom 28%
+			left 50%
+			transform translate(-60%, -50%)
+			display inline-block
+			margin-top vw(15)
+			width vw(103)
+			height vw(16)
+			background-image url("data:image/svg+xml,%3Csvg viewBox='0 0 103 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M102.707 8.70711C103.098 8.31658 103.098 7.68342 102.707 7.29289L96.3431 0.928932C95.9526 0.538408 95.3195 0.538408 94.9289 0.928932C94.5384 1.31946 94.5384 1.95262 94.9289 2.34315L100.586 8L94.9289 13.6569C94.5384 14.0474 94.5384 14.6805 94.9289 15.0711C95.3195 15.4616 95.9526 15.4616 96.3431 15.0711L102.707 8.70711ZM0 9H102V7H0V9Z' fill='white'/%3E%3C/svg%3E%0A")
+			transition .4s opacity, .4s transform
+			opacity 0
+	&__decor-el
+		position absolute
+		right 0
+		bottom 0
+		&--one
+			width vw(650)
+			height vw(650)
+			bottom vw(-108)
+			right 0
+			@media $mobile
+				width vm(272)
+				height vm(243)
+				bottom auto
+				top vm(139)
+				right vm(-81)
+		&--two
+			width vw(903)
+			height vw(500)
+			bottom vw(-89)
+			right vw(-180)
+			@media $mobile
+				width vm(349)
+				height vm(198)
+				right vm(-8)
+				bottom vm(188)
+		&--three
+			width vw(746)
+			height vw(500)
+			@media $mobile
+				width vm(417)
+				height vm(199)
+				right vm(-93)
+				bottom vm(187)
+		&--four
+			width vw(695)
+			height vw(479)
+			bottom vw(-18)
+			@media $mobile
+				width vm(469)
+				height vm(236)
+				bottom vm(178)
+				right vm(-217)
+		&--fifth
+			width vw(775)
+			height vw(500)
+			bottom vw(-5)
+			right vw(-30)
+			@media $mobile
+				width vm(338)
+				height vm(193)
+				bottom vm(184)
+				right vm(-90)

@@ -1,0 +1,124 @@
+variables:
+   REGISTRY_PATH: rpoint
+   IMAGE_TAG: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+   DOCKER_TLS_CERTDIR: ""
+
+stages:
+   - build
+   - build-docker
+   - deploy
+   - logs
+
+build-dev:
+   image: lllelll/node_pupeeteer_bzip2_tar
+   stage: build
+   cache:
+      untracked: true
+      key: "$AWS_BUCKET_NAME"
+      paths:
+         - node_modules/
+   only:
+      - dev
+   script:
+      - export VUE_APP_ANALYTICS=development
+      - export VUE_APP_BACK_ENV=development
+      - yarn
+      - yarn build
+   artifacts:
+      paths:
+         - dist/
+      expire_in: 1 hour
+
+build_image:
+   image: docker:19.03.0
+   variables:
+      DOCKER_DRIVER: overlay2
+      # Create the certificates inside this directory for both the server
+      # and client. The certificates used by the client will be created in
+      # /certs/client so we only need to share this directory with the
+      # volume mount in `config.toml`.
+      DOCKER_TLS_CERTDIR: "/certs"
+      BACK_ENV: development
+   services:
+   - docker:19.03.0-dind
+   stage: build-docker
+   only:
+      - dev
+   when: on_success
+   before_script:
+      - docker info
+   script:
+      - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+      - docker build --build-arg BACK_ENV=$BACK_ENV -t ${IMAGE_TAG}:${CI_PIPELINE_ID} .
+      - docker version
+      - docker push ${IMAGE_TAG}:${CI_PIPELINE_ID}
+      - docker logout ${CI_REGISTRY}
+
+deploy:
+   image: lllelll/kubectl_helm_chart:latest
+   stage: deploy
+   when: on_success
+   only:
+      - dev
+   variables:
+      NAMESPACE: rpoint
+      RELEASE: $RELEASE_NAME
+      APP_CHART: /devdeploy-0.1.0.tgz
+      INGRESS_HOST: $PROJECT_NAME
+   before_script:
+      - mkdir -p /root/.kube
+      - echo ${KUBE_CONFIG} | base64 -d > /root/.kube/config
+      - export KUBECONFIG=/root/.kube/config
+   after_script:
+      - rm -rf /root/.kube
+   script:
+      - >-
+         helm upgrade
+         --install
+         --force
+         --namespace=${NAMESPACE} ${RELEASE} ${APP_CHART}
+         --set "image.repository=${IMAGE_TAG}"
+         --set "image.tag=${CI_PIPELINE_ID}"
+         --set "ingress.host=${INGRESS_HOST}"
+         --set "imagePullSecret=gitlab-registry"
+         --set "slack.enabled=true"
+         --set "slack.key=${SLACK_KEY}"
+         --set "slack.channel=${SLACK_CHANNEL}"
+         --set "slack.stand=DEV"
+
+deploy-prod:
+   image: lllelll/openconnect-totp-git
+   cache: {}
+   stage: deploy
+   only:
+      - master
+   before_script:
+      - git config --global user.email "sergey.andreychenko@gmail.com"
+      - git config --global user.name "Sergey Andreychenko"
+      - echo -n $VPN_PIN$(oathtool --totp -b $VPN_SECRET) | openconnect -b --user $VPN_LOGIN --authgroup=User $VPN_SERVER
+      - sleep 30
+      - mkdir -p ~/.ssh
+      - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+      - chmod 700 ~/.ssh/id_rsa
+      - eval "$(ssh-agent -s)"
+      - ssh-add ~/.ssh/id_rsa
+      - echo "$RM_FP" >> ~/.ssh/known_hosts
+   script:
+      - git pull --no-edit $PROD_GIT master --allow-unrelated-histories
+      - git push $PROD_GIT HEAD:master
+
+get_logs:
+   image: lllelll/kubectl_helm_chart
+   stage: logs
+   when: manual
+   variables:
+      NAMESPACE: rpoint
+      RELEASE: $RELEASE_NAME
+   before_script:
+      - mkdir -p /root/.kube
+      - echo ${KUBE_CONFIG} | base64 -d > /root/.kube/config
+      - export KUBECONFIG=/root/.kube/config
+   script:
+      - kubectl -n ${NAMESPACE} get po | grep ${RELEASE} | awk '{print $1}' | xargs kubectl -n ${NAMESPACE} logs
+   after_script:
+      - rm -rf /root/.kube

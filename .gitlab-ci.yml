@@ -1,0 +1,86 @@
+cache:
+  paths:
+    - node_modules/
+    
+variables:
+  RELEASE_NAME: newmasculinity
+  PROJECT_NAME: newmasculinity.championat.com
+  GITLAB_REGISTRY: gitlab-special.rambler-co.ru:5000
+  REGISTRY_PATH: andreichenko
+  IMAGE_TAG: ${GITLAB_REGISTRY}/${REGISTRY_PATH}/${PROJECT_NAME}
+
+stages:
+  - build-app
+  - build-docker
+  - deploy
+  - logs
+
+build-prod:  
+   image: lllelll/node_pupeeteer_bzip2_tar 
+   stage: build-app
+   script:      
+      - export VUE_APP_ANALYTICS=production
+      - export VUE_APP_BACK_ENV=production
+      - yarn
+      - yarn build 
+   artifacts:    
+      paths:
+         - dist/    
+
+build_image:
+  stage: build-docker
+  when: on_success
+  variables:
+    BACK_ENV: production
+  script:
+    - echo ${REGISTRY_TOKEN} | docker login --username ${REGISTRY_USER} --password-stdin ${GITLAB_REGISTRY}
+    - docker build --build-arg BACK_ENV=$BACK_ENV -t ${IMAGE_TAG}:${CI_PIPELINE_ID} .
+    - docker version
+    - docker push ${IMAGE_TAG}:${CI_PIPELINE_ID}
+    - docker logout ${GITLAB_REGISTRY}
+
+deploy:
+  stage: deploy
+  when: on_success
+  variables:
+    NAMESPACE: andreichenko
+    RELEASE: ${RELEASE_NAME}
+    APP_CHART: /common_chart.tgz
+    INGRESS_HOST: ${PROJECT_NAME}
+  before_script:
+    - mkdir -p .kube
+    - echo ${KUBE_CONFIG} | base64 -d > .kube/config
+    - export KUBECONFIG=.kube/config
+  after_script:
+    - rm -rf .kube
+  script:
+    - >-
+      helm upgrade
+      --install
+      --force
+      --wait
+      --tiller-namespace=${NAMESPACE}
+      --namespace=${NAMESPACE} ${RELEASE} ${APP_CHART}
+      --set "image.repository=${IMAGE_TAG}"
+      --set "image.tag=${CI_PIPELINE_ID}"
+      --set "ingress.hosts[0]=${INGRESS_HOST}"
+      --set "resources.limits.cpu=${LIMIT_CPU}"
+      --set "resources.limits.memory=${LIMIT_MEM}"
+      --set "resources.requests.cpu=${REQUEST_CPU}"
+      --set "resources.requests.memory=${REQUEST_MEM}"
+
+get_logs:
+   image: lllelll/kubectl_helm_chart
+   stage: logs
+   when: manual
+   variables:
+      NAMESPACE: andreichenko
+      RELEASE: $RELEASE_NAME
+   before_script:
+      - mkdir -p .kube
+      - echo ${KUBE_CONFIG} | base64 -d > .kube/config
+      - export KUBECONFIG=.kube/config
+   script:
+      - kubectl -n ${NAMESPACE} get po | grep ${RELEASE} | awk '{print $1}' | xargs kubectl -n ${NAMESPACE} logs
+   after_script:
+      - rm -rf /root/.kube
